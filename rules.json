@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        { "header": "Accept-Language", "operation": "set", "value": "en-US,en;q=0.9" },
+        { "header": "Sec-GPC", "operation": "set", "value": "1" },
+        { "header": "DNT", "operation": "set", "value": "1" }
+      ]
+    },
+    "condition": {
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame",
+        "stylesheet",
+        "script",
+        "image",
+        "font",
+        "object",
+        "xmlhttprequest",
+        "ping",
+        "media",
+        "websocket",
+        "other"
+      ]
+    }
+  }
+]

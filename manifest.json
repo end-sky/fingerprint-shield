@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Fingerprint Shield",
+  "version": "1.1.0",
+  "description": "Tor-style canvas protection (blank readback unless allowed per site), WebGL spoofing, UTC timezone and en-US language before pages load, plus Chromium hardening.",
+  "minimum_chrome_version": "120",
+  "permissions": ["declarativeNetRequest", "privacy", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Fingerprint Shield: click to allow canvas reads on this site"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["relay.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "headers",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}
