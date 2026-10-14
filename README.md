@@ -41,6 +41,3 @@ All page-side patches run in the MAIN world at `document_start` in every frame, 
 Launch Chromium with the real timezone and language set at process level:
 
     TZ=UTC chromium --lang=en-US --accept-lang=en-US
-
-## Test
-browserleaks.com/canvas, /webgl, /javascript and coveryourtracks.eff.org
